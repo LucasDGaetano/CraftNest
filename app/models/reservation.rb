@@ -7,9 +7,7 @@ class Reservation < ApplicationRecord
   validates :user_id, presence: true
   validates :review_id, presence: true
   validates :start_date, presence: true
-  validates :start_date, availability: true
   validates :end_date, presence: true
-  validates :end_date, availability: true
 
   validate :end_date_after_start_date
 
