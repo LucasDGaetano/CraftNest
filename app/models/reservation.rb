@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :atelier
   belongs_to :user
-  belongs_to :review
+  has_one :review
 
   validates :atelier_id, presence: true
   validates :user_id, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_135532) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_155453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,11 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_135532) do
     t.bigint "user_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.bigint "review_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["atelier_id"], name: "index_reservations_on_atelier_id"
-    t.index ["review_id"], name: "index_reservations_on_review_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -72,6 +70,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_135532) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "reservation_id"
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_135532) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ateliers", "users"
   add_foreign_key "reservations", "ateliers"
-  add_foreign_key "reservations", "reviews"
   add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "reservations"
   add_foreign_key "reviews", "users"
 end
