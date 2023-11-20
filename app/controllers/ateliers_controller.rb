@@ -5,7 +5,7 @@ class AteliersController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def new
@@ -24,6 +24,11 @@ class AteliersController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def atelier_params
   end
 
 end
