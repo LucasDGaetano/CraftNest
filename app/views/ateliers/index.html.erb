@@ -1,0 +1,10 @@
+<h1>ALL THE ATELIERS (<%= @ateliers.count %>)</h1>
+
+<ul class="list-group">
+
+  <% @ateliers.each do |atelier| %>
+    <li class="list-group-item">
+      <%= atelier.name %> - <%= atelier.location %> - <%= atelier.category %> - <%= atelier.price %>
+    </li>
+  <% end %>
+</ul>
