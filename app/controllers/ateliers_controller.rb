@@ -15,8 +15,8 @@ class AteliersController < ApplicationController
 
   def create
     @atelier = Atelier.new(atelier_params)
-    @user = User.find(params[:user_id])
-    @atelier.user = @user
+    # @user = User.find(params[:user_id]) # verifier autre moyen de recuperer le user genre session.user
+    @atelier.user = User.last
     if @atelier.save
       redirect_to atelier_path(@atelier)
     else
@@ -25,7 +25,6 @@ class AteliersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -35,16 +34,17 @@ class AteliersController < ApplicationController
 
   def destroy
     @atelier.destroy
+    redirect_to ateliers_path
   end
 
   private
 
   def atelier_params
-    params.require('atelier').permit(:name, :location, :category, :price)
+    params.require('atelier').permit(:name, :location, :category, :price, :photo)
   end
 
   def set_atelier
-    @atelier = Atelier.find(params[:atelier_id])
+    @atelier = Atelier.find(params[:id])
   end
 
 end
