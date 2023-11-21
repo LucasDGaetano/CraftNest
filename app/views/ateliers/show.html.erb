@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h1>ATELIER <%= @atelier.name %></h1>
+
+  <h2> propriétaire : <%= @atelier.user.username %></h2>
+  <h2> prix : <%= @atelier.price %></h2>
+  <h2> lieu : <%= @atelier.location %></h2>
+  <h2> categorie : <%= @atelier.category %></h2>
+
+  <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <%= link_to "return to ateliers", ateliers_path %>
+  <%= link_to "edit this atelier", edit_atelier_path %>
+    <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
+
+  <hr>
+  INSERER LE FORMULAIRE POUR UNE RESERVATION EN DESSOUS !!
+</div>
