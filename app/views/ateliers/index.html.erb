@@ -1,14 +1,23 @@
 <div class="container">
   <h1>ALL THE ATELIERS (<%= @ateliers.count %>)</h1>
 
-  <ul class="list-group">
-
+  <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @ateliers.each do |atelier| %>
-      <li class="list-group-item">
-        <%= atelier.name %> - <%= atelier.location %> - <%= atelier.category %> - <%= atelier.price %>  <%= link_to "see more about this atelier", atelier_path(atelier) %>
-      </li>
+    <div class="col">
+      <div class="card-trip card my-3">
+          <%= cl_image_tag atelier.photo.key, height: 1000, width: 1000, class: "card-img-top" %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= atelier.name %></h2>
+            <p><%= atelier.location %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= atelier.price %> €</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
     <% end %>
-  </ul>
+  </div>
 
   <%= link_to "Create a new atelier", new_atelier_path %>
 </div>
