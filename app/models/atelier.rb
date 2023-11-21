@@ -4,7 +4,7 @@ class Atelier < ApplicationRecord
   has_many :reviews, through: :reservations
   has_many :users, through: :reservations
 
-  CATEGORIES = %w[peinture sculpture céramique bois textile photographie joaillerie]
+  CATEGORIES = %w[Peinture Sculpture Céramique Bois Textile Photographie Joaillerie]
 
   validates :name, presence: true, length: { in: 6..40 }
   validates :location, presence: true

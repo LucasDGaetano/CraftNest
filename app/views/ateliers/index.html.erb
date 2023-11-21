@@ -1,10 +1,14 @@
-<h1>ALL THE ATELIERS (<%= @ateliers.count %>)</h1>
+<div class="container">
+  <h1>ALL THE ATELIERS (<%= @ateliers.count %>)</h1>
 
-<ul class="list-group">
+  <ul class="list-group">
 
-  <% @ateliers.each do |atelier| %>
-    <li class="list-group-item">
-      <%= atelier.name %> - <%= atelier.location %> - <%= atelier.category %> - <%= atelier.price %>
-    </li>
-  <% end %>
-</ul>
+    <% @ateliers.each do |atelier| %>
+      <li class="list-group-item">
+        <%= atelier.name %> - <%= atelier.location %> - <%= atelier.category %> - <%= atelier.price %>  <%= link_to "see more about this atelier", atelier_path(atelier) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Create a new atelier", new_atelier_path %>
+</div>

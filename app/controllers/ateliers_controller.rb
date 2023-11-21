@@ -6,7 +6,6 @@ class AteliersController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -25,7 +24,6 @@ class AteliersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -44,7 +42,7 @@ class AteliersController < ApplicationController
   end
 
   def set_atelier
-    @atelier = Atelier.find(params[:atelier_id])
+    @atelier = Atelier.find(params[:id])
   end
 
 end
