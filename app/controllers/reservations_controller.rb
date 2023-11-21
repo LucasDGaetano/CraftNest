@@ -6,7 +6,9 @@ class ReservationsController < ApplicationController
   end
 
   def show
-
+    @reservation = Reservation.find(params[:id])
+    @reviews = Review.all
+    @review = Review.new
   end
 
   def create

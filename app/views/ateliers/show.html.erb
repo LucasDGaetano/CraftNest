@@ -42,9 +42,9 @@
     <h3>You have a reservation for this atelier</h3>
     <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>
     <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
+    <%= link_to "more details on this reservation", reservation_path(resa) %>
     <hr>
   <% end %>
 <% end %>
 </div>
-
 <hr>
