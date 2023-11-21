@@ -17,6 +17,12 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
+   <p>Pseudo</p>
+    <%= f.input :username,
+      label: false,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "username" }%>
     <p>Email</p>
     <%= f.input :email,
       label: false,
