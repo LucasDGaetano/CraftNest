@@ -2,11 +2,17 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @atelier = Atelier.find(params[:atelier_id].to_i)
+  end
+
+  def show
+
   end
 
   def create
     @reservation = Reservation.new(reservations_params)
-    @atelier = Atelier.new(params[:atelier_id])
+    @atelier = Atelier.find(params[:atelier_id])
+    @reservation.user = current_user
     @reservation.atelier = @atelier
     if @reservation.save
       redirect_to atelier_path(@atelier)
@@ -25,6 +31,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservations_params
-    param.require("reservation").permit(:atelier_id, :user_id, :review_id, :start_date, :end_date)
+    params.require("reservation").permit(:atelier_id, :user_id, :start_date, :end_date)
   end
 end
