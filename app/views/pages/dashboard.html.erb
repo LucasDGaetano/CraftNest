@@ -1,43 +1,54 @@
 <div class="container mt-5">
   <h2> <%= @user.username %></h2>
 
+    <div class="container mt-5">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <div class="container me-auto">
+          <a class="nav-link active" aria-current="page" href="#">Mes réservations</a>
+          <% if @user.reservations.any? %>
 
-  <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Mes réservations</a>
+        <% @user.reservations.each do |reservation| %>
+          <li>
+            <p>Du : <%= reservation.start_date %></p>
+            <p>Au : <%= reservation.end_date %></p>
+          </li>
+          <% end %>
+        </ul>
+          <% else %>
+          <p>Vous n'avez aucune réservation.</p>
+          <% end %>
+          </div>
 
-  <% if @user.reservations.any? %>
-    <ul>
-      <% @user.reservations.each do |reservation| %>
-        <li>
-          <p>Du : <%= reservation.start_date %></p>
-          <p>Au : <%= reservation.end_date %></p>
         </li>
-      <% end %>
-    </ul>
-      <% else %>
-      <p>Vous n'avez aucune réservation.</p>
-      <% end %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Mes ateliers</a>
-      <% if @user.ateliers.any? %>
-    <ul>
-      <% @user.ateliers.each do |atelier| %>
-        <li>
-          <p>Nom : <%= atelier.name %></p>
-          <p>Description : <%= atelier.location %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>Cet utilisateur n'a pas d'ateliers.</p>
-  <% end %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Mes informations</a>
-  </li>
-  </li>
-</ul>
-</div>
-</div>
+          <li class="nav-item">
+          <div class="container me-auto">
+            <a class="nav-link" href="#">Mes ateliers</a>
+              <% if @user.ateliers.any? %>
+        <ul>
+        <% @user.ateliers.each do |atelier| %>
+            <p>Nom : <%= atelier.name %></p>
+            <p>Adresse : <%= atelier.location %></p>
+            <p>Prix (€) : <%= atelier.price %></p>
+            <p>Categorie : <%= atelier.category %></p>
+          </li>
+        <% end %>
+        </ul>
+        <% else %>
+        <p>Vous n'avez pas d'ateliers.</p>
+        <% end %>
+          </div>
+
+          </li>
+          <li class="nav-item">
+          <div class="container me-auto">
+            <a class="nav-link" href="#">Mes informations</a>
+              <p>Nom : <%= @user.name %></p>
+              <p>Prénom : <%= @user.last_name %></p>
+              <p>Pseudo : <%= @user.username %></p>
+              <p>Email : <%= @user.email %></p>
+          </li>
+          </div>
+
+  </ul>
+    </div>

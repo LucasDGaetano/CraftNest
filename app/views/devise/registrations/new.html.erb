@@ -1,11 +1,12 @@
-<div class="container mt-5 mb-5">
-<h2>Sign up</h2>
+<div class="container mt-5 mb-5" style="text-align: center;">
+<h2>Se créer un compte</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
 <div class="form-inputs">
-  <div class="col-md-3">
+  <div class="row">
+  <div class="col-md-4">
       <p>Nom</p>
       <%= f.input :name,
         label: false,
@@ -14,7 +15,7 @@
                   input_html: { autocomplete: "name" }%>
 </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     <p>Prénom</p>
     <%= f.input :last_name,
       label: false,
@@ -23,7 +24,7 @@
                 input_html: { autocomplete: "last_name" }%>
     </div>
 
-   <div class="col-md-3">
+   <div class="col-md-4">
     <p>Pseudo</p>
       <%= f.input :username,
         label: false,
@@ -32,7 +33,7 @@
                   input_html: { autocomplete: "username" }%>
    </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
       <p>Email</p>
       <%= f.input :email,
         label: false,
@@ -41,7 +42,7 @@
                   input_html: { autocomplete: "email" }%>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     <p>Mot de passe</p>
     <%= f.input :password,
         label: false,
@@ -51,7 +52,7 @@
     </div>
 
 
-    <div class="col-md-3">
+    <div class="col-md-4">
       <p>Confirmation de votre mot de passe</p>
       <%= f.input :password_confirmation,
         label: false,
