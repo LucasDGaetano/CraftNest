@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
 
-    redirect_to atelier_path(@reservations.atelier)
+    redirect_to ateliers_path(@reservations.atelier)
   end
 
   private
