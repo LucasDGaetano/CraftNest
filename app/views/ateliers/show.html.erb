@@ -11,6 +11,8 @@
 
   <%= link_to "return to ateliers", ateliers_path %>
   <%= link_to "edit this atelier", edit_atelier_path %>
+    <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
+
   <hr>
   INSERER LE FORMULAIRE POUR UNE RESERVATION EN DESSOUS !!
 </div>

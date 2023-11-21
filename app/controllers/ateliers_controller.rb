@@ -33,6 +33,7 @@ class AteliersController < ApplicationController
 
   def destroy
     @atelier.destroy
+    redirect_to ateliers_path
   end
 
   private
