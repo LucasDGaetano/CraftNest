@@ -9,6 +9,7 @@ class Reservation < ApplicationRecord
   validates :end_date, presence: true
 
   validate :end_date_after_start_date
+  validate :end_date_not_past
 
   private
 
@@ -17,4 +18,11 @@ class Reservation < ApplicationRecord
       errors.add(:end_date, "Must be after the start date!")
     end
   end
+
+  def end_date_not_past
+    if end_date < Date.today
+      errors.add(:end_date, "Can't be in the past")
+    end
+  end
+
 end

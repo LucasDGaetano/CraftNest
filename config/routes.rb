@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :ateliers do
-    resources :reservations, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new, :create]
   end
 
-  resources :reservations, only: [:show]
+  resources :reservations, only: [:show, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
