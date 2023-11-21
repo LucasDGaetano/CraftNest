@@ -14,7 +14,11 @@
     <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
 
   <hr>
-    <div class= "new-reservation">
+
+  <div data-controller="toggle-reservations" class="mt-5">
+    <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
+
+    <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
       <h1>Faire une nouvelle réservation</h1>
       <%= simple_form_for [@atelier, @reservation] do |f| %>
         <%= f.input :start_date,
@@ -26,4 +30,7 @@
         <%= f.button :submit %>
       <% end %>
     </div>
+  </div>
+
+
 </div>
