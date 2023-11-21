@@ -1,0 +1,8 @@
+<%= simple_form_for @atelier do |f| %>
+<%= f.input :name %>
+<%= f.input :location %>
+<%= f.input :price %>
+<%= f.input :category, collection: Atelier::CATEGORIES %>
+<%= f.input :photo, as: :file %>
+<%= f.submit "Create atelier !" %>
+<% end %>
