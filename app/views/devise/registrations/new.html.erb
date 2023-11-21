@@ -4,46 +4,65 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <p>Nom</p>
-    <%= f.input :name,
-      label: false,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
+<div class="form-inputs">
+  <div class="col-md-3">
+      <p>Nom</p>
+      <%= f.input :name,
+        label: false,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+</div>
+
+    <div class="col-md-3">
     <p>Prénom</p>
     <%= f.input :last_name,
       label: false,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
-   <p>Pseudo</p>
-    <%= f.input :username,
-      label: false,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "username" }%>
-    <p>Email</p>
-    <%= f.input :email,
-      label: false,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
+    </div>
+
+   <div class="col-md-3">
+    <p>Pseudo</p>
+      <%= f.input :username,
+        label: false,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "username" }%>
+   </div>
+
+    <div class="col-md-3">
+      <p>Email</p>
+      <%= f.input :email,
+        label: false,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+    </div>
+
+    <div class="col-md-3">
     <p>Mot de passe</p>
     <%= f.input :password,
-      label: false,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <p>Confirmation de votre mot de passe</p>
-    <%= f.input :password_confirmation,
-      label: false,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+        label: false,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+
+
+    <div class="col-md-3">
+      <p>Confirmation de votre mot de passe</p>
+      <%= f.input :password_confirmation,
+        label: false,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Se créer un compte" %>
+    <%= f.button :submit, "S'enregistrer" %>
   </div>
 <% end %>
 
