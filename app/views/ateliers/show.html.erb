@@ -14,5 +14,16 @@
     <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
 
   <hr>
-  INSERER LE FORMULAIRE POUR UNE RESERVATION EN DESSOUS !!
+    <div class= "new-reservation">
+      <h1>Faire une nouvelle réservation</h1>
+      <%= simple_form_for [@atelier, @reservation] do |f| %>
+        <%= f.input :start_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
 </div>
