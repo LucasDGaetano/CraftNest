@@ -25,16 +25,14 @@ user9 = User.create!(username:"mozart", email:"mozart@hotmail.fr", password: "12
 user10 = User.create!(username:"beethoven", email:"beethoven@hotmail.fr", password: "123456")
 puts "CREATED USERS"
 
-atelier1 = Atelier.create!(name: "Ateliernumero1", category: "peinture", location: "Paris", price: 300, user: user1)
+# atelier1 = Atelier.create!(name: "Ateliernumero1", category: "Peinture", location: "Paris", price: 300, user: user1)
 
-atelier2 = Atelier.create!(name: "Ateliernumero2", category: "peinture", location: "Paris", price: 119, user: user2)
+# atelier2 = Atelier.create!(name: "Ateliernumero2", category: "Peinture", location: "Paris", price: 119, user: user2)
 
-atelier3 = Atelier.create!(name: "Ateliernumero3", category: "sculpture", location: "LYON", price: 150, user: user3)
+# atelier3 = Atelier.create!(name: "Ateliernumero3", category: "Sculpture", location: "LYON", price: 150, user: user3)
 
-atelier4 = Atelier.create!(name: "Ateliernumero4", category: "joaillerie", location: "LILLE", price: 220, user: user4)
-puts "CREATED ATELIERS"
-
-resa1 = Reservation.create!(atelier: atelier1, user: user4, start_date: Date.new(), end_date: 25/11/2023)
+# atelier4 = Atelier.create!(name: "Ateliernumero4", category: "Joaillerie", location: "LILLE", price: 220, user: user4)
+# puts "CREATED ATELIERS"
 
 # puts 'Liste ateliers'
 # atelier_d_argent = Atelier.new(name: "Atelier d'Argent", location: "Paris", price: 300, category: "joaillerie")

@@ -3,6 +3,7 @@ class Atelier < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :reviews, through: :reservations
   has_many :users, through: :reservations
+  has_one_attached :photo
 
   CATEGORIES = %w[Peinture Sculpture Céramique Bois Textile Photographie Joaillerie]
 
