@@ -14,5 +14,37 @@
     <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
 
   <hr>
-  INSERER LE FORMULAIRE POUR UNE RESERVATION EN DESSOUS !!
+
+  <div data-controller="toggle-reservations" class="mt-5">
+    <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
+
+    <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
+      <h1>Faire une nouvelle réservation</h1>
+      <%= simple_form_for [@atelier, @reservation] do |f| %>
+        <%= f.input :start_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
+
+<hr>
+<div class="container">
+<% @reservations.each do |resa| %>
+  <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
+    <h3>You have a reservation for this atelier</h3>
+    <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>
+    <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
+    <hr>
+  <% end %>
+<% end %>
+</div>
+
+<hr>
