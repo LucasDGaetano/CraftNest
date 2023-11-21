@@ -7,6 +7,7 @@ class AteliersController < ApplicationController
 
   def show
     @reservation = Reservation.new
+    @reservations = Reservation.all
   end
 
   def new
@@ -16,7 +17,7 @@ class AteliersController < ApplicationController
   def create
     @atelier = Atelier.new(atelier_params)
     # @user = User.find(params[:user_id]) # verifier autre moyen de recuperer le user genre session.user
-    @atelier.user = User.last
+    @atelier.user = current_user
     if @atelier.save
       redirect_to atelier_path(@atelier)
     else

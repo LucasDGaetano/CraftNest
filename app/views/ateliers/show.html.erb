@@ -27,3 +27,13 @@
       <% end %>
     </div>
 </div>
+
+// COMPARAISON AVEC LE CURRENT USER ID ET LES RESERVATIONS SI YEN A UNE QUI A UN ID DE LUSER ET L'ID ET L'ATELIER DE CETTE PAGE (params id)
+// REMPLIR UN @RESERVATIONS AUPARAVANT DANS LE CONTROLLER ?????? uniquement celle de l'utilisateur afin d'économiser les ressources ?
+
+<% @reservations.each do |resa| %>
+  <%= resa.user_id %>
+  <% if current_user.id == resa.user_id %>
+    hello
+  <% end %>
+<% end %>
