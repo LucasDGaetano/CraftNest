@@ -34,3 +34,17 @@
 
 
 </div>
+
+<hr>
+<div class="container">
+<% @reservations.each do |resa| %>
+  <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
+    <h3>You have a reservation for this atelier</h3>
+    <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>
+    <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
+    <hr>
+  <% end %>
+<% end %>
+</div>
+
+<hr>
