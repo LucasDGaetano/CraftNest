@@ -1,48 +1,119 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+
+<div class="banner" width="auto" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1597960194599-22929afc25b1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1> <strong>Craftnest</strong></h1>
+    <p>Avec Craftnest, trouver le lieu idéal pour exprimer votre talent</p>
+  </div>
+</div>
+
+    <nav>
+      <!-- Votre barre de navigation -->
+      <ul>
+        <li><a href="#">Recherche</a></li>
+        <li><a href="/ateliers">Ateliers</a></li>
+        <!-- Autres liens de navigation -->
+      </ul>
+    </nav>
+  </header>
+
+<section class="company-description">
+    <div class="container">
+      <p>
+        Passionnée par la création artistique et parce que nous souhaitons faire grandir l'art qui sommeille entre chacun d'entre nous, Craftnest met à disposition des espaces inspirants pour libérer votre créativité. Notre mission est de fournir des
+        ateliers de qualité où artistes amateurs et professionnels peuvent s'épanouir.
+      </p>
+      <p>N'hésitez pas à explorer nos ateliers et à débuter votre aventure artistique avec nous !</p>
+    </div>
+  </section>
+
+    <!-- Section Ateliers -->
+    <section class="workshops">
+      <div class="card">
+        <img src="https://www.lamaisondesartistes.fr/site/wp-content/uploads/2023/09/img_0997_retouche2-min-c9357ba5-360x480.jpg" alt="Atelier 1">
+        <h3>Atelier boutique</h3>
+        <p>Atelier boutique d’artiste de 30m² dans une rue piétonne de Sète à proximité immédiate de l’office de tourisme (30 mètres).</p>
+        <p><strong>450€</strong></p>
+        <p>Sète</p>
+        <a href="#" class="button">En savoir plus</a>
+      </div>
+      <!-- Ajoutez d'autres cartes pour d'autres ateliers -->
+      <div class="card">
+        <img src="https://www.lamaisondesartistes.fr/site/wp-content/uploads/2023/07/screenshot_2023-07-16-11-13-21-00_99c04817c0de5652397fc8b56c3b3817-df230f28-369x480.jpg" alt="Atelier 2">
+        <h3>Atelier d'artiste</h3>
+        <p>Atelier hyper lumineux, dans un complexe d'atelier d'artistes et d'artisans, douche et toilette a l'intérieur.</p>
+        <p><strong>1000€</strong></p>
+        <p>Aubervilliers</p>
+        <a href="#" class="button">En savoir plus</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.lamaisondesartistes.fr/site/wp-content/uploads/2023/08/16b7c80c-02cc-42cf-a79a-107c436c4904-9eb7bb00-360x480.jpg" alt="Atelier 3">
+        <h3>Atelier de couture</h3>
+        <p>Atelier partagé de 110m2 avec espace stockage en sous-sol, un espace cuisine, un espace événementiel. Plusieurs équipements à disposition.</p>
+        <p><strong>600€</strong></p>
+        <p>Paris</p>
+        <a href="#" class="button">En savoir plus</a>
+      </div>
+    </section>
 
 
+  <main>
+ <!-- Section Avis -->
+  <section class="reviews">
+    <h2>Avis de nos clients</h2>
+    <div class="review-badges">
+      <!-- Badge / Pastille pour un avis -->
+      <div class="review-badge">
+        <p>"C'est formidable que ce site existe !"</p>
+        <p class="author">- Marie D.</p>
+      </div>
+      <!-- Ajoutez d'autres badges pour d'autres avis -->
+      <div class="review-badge">
+        <p>"Super dispositif, réactivité, disponibilité"</p>
+        <p class="author">- Alexis D.</p>
+      </div>
+
+      <div class="review-badge">
+        <p>"Les ateliers sont magnifiques et l'équipe est très accueillante"</p>
+        <p class="author">- Pierre E.</p>
+      </div>
+    </div>
+  </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Autres sections et contenus -->
+  </main>
 <div class="container d-flex justify-content-center">
   <div style="width: 600px; height: 400px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
+
+  <footer>
+    <!-- Votre pied de page -->
+    <p>&copy; 2023 Location d'Ateliers d'Artiste</p>
+  </footer>
+
+</body>
+</html>
+
+</div>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Votre code HTML existant -->
+
+<main>
+
+
+  <!-- Section Ateliers -->
+  <!-- ... Votre contenu existant pour les ateliers -->
+</main>
+
+<!-- Votre code HTML existant -->

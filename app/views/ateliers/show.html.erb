@@ -8,12 +8,13 @@
   <h2> categorie : <%= @atelier.category %></h2>
 
   <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
-  <hr>
+
+<hr>
   <%= link_to "return to ateliers", ateliers_path %>
-  <%= link_to "edit this atelier", edit_atelier_path(@atelier) %>
   <% if current_user == @atelier.user %>
+    <%= link_to "edit this atelier", edit_atelier_path(@atelier) %>
     <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
-  <% end %>
+    <% end %>
 
   <hr>
 
