@@ -9,20 +9,14 @@
 #   end
 require "date"
 
+Review.destroy_all
 Reservation.destroy_all
 Atelier.delete_all
 User.delete_all
 puts "CLEANED DATABASE"
 
-user1 = User.create!(username: "zairacosman", email: "zairacosman@hotmail.fr", password: "lewagon20012023")
-user2 = User.create!(username: "artisteouf", email: "artisteouf@hotmail.fr", password: "paris11top")
-user3 = User.create!(username: "xavierdupont", email: "xavier.dupont@yahoo.fr", password: "corsicagood")
-user4 = User.create!(username: "charlesdonatelo", email: "donatelo@yahoo.fr", password: "charlesdon")
-user5 = User.create!(username:"macarena", email:"macarena1206@yahoo.fr", password:"brazilia12")
-user6 = User.create!(username:"soprano12", email:"courdechant@hotmail.com", password:"beethoven12")
-user8 = User.create!(username:"peinturedeparis", email:"peintureparis@hotmail.fr", password: "123456")
-user9 = User.create!(username:"mozart", email:"mozart@hotmail.fr", password: "123456")
-user10 = User.create!(username:"beethoven", email:"beethoven@hotmail.fr", password: "123456")
+user1 = User.create!(username: "zairacosman", email: "zairacosman@hotmail.fr", password: "lewagon20012023", last_name: "Cosman", name: "Zaira")
+
 puts "CREATED USERS"
 
 # atelier1 = Atelier.create!(name: "Ateliernumero1", category: "Peinture", location: "Paris", price: 300, user: user1)
