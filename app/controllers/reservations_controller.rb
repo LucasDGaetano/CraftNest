@@ -6,7 +6,9 @@ class ReservationsController < ApplicationController
   end
 
   def show
-
+    @reservation = Reservation.find(params[:id])
+    @reviews = Review.all
+    @review = Review.new
   end
 
   def create
@@ -14,17 +16,17 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     @reservation.atelier = @atelier
     if @reservation.save
-      redirect_to ateliers_path(@atelier)
+      redirect_to atelier_path(@atelier)
     else
-      render :new
+      render "ateliers/show", status: :unprocessable_entity
     end
   end
 
   def destroy
     @reservation = Reservation.find(params[:id])
+    atelier = @reservation.atelier
     @reservation.destroy
-
-    redirect_to ateliers_path(@reservations.atelier)
+    redirect_to atelier_path(atelier), status: :see_other
   end
 
   private

@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Here are the details of your reservations : </h1>
+  <h2>réservé l'atelier <%= @reservation.atelier.name %> de <%= @reservation.atelier.user.username %></h2>
+  <h2>situé au <%= @reservation.atelier.location %></h2>
+  <h2>Du <%= @reservation.start_date %> au <%= @reservation.end_date%> - <%= ( @reservation.end_date -  @reservation.start_date).to_i %> jours </h2>
+  <h2>soit un total de <strong><%= @reservation.atelier.price * ( @reservation.end_date -  @reservation.start_date).to_i %> €</strong></h2>
+<hr>
+  <div class="container">
+<% @reviews.each do |review| %>
+  <% if review.reservation_id == @reservation.id %>
+
+    <h3>De : <%= review.user.username %> - <span style="color: #f7e62b;"><%= review.rating %> <i class="fa-solid fa-star"></i></span></h3>
+    <h4><%= review.content %></h4>
+    <hr>
+  <% end %>
+<% end %>
+</div>
+<hr>
+SI LA DATE EST DEPASSE ON AFFICHE LE FORM POUR CREER UNE REVIEW
+
+<%= (@reservation.end_date - Date.today).to_i %>
+  <% if (@reservation.end_date - Date.today).to_i < 0 %>
+    VOTRE RESERVATION EST TERMINEE, GIVE A REVIEW
+    <%= simple_form_for [@reservation, @review] do |f| %>
+      <%= f.input :rating %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+
+  <% end %>
+
+</div>
