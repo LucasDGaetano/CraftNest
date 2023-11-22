@@ -1,5 +1,5 @@
 class AteliersController < ApplicationController
-  before_action :set_atelier, only: [:show, :edit, :update, :destroy]
+  before_action :set_atelier, only: [:show, :edit,:update, :destroy]
 
   def index
     @ateliers = Atelier.all

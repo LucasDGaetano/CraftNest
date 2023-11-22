@@ -10,7 +10,7 @@
   <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
 
   <%= link_to "return to ateliers", ateliers_path %>
-  <%= link_to "edit this atelier", edit_atelier_path %>
+  <%= link_to "edit this atelier", edit_atelier_path(@atelier) %>
     <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
 
   <hr>
@@ -37,7 +37,8 @@
 
 <hr>
 <div class="container">
-<% @reservations.each do |resa| %>
+
+<% @atelier.reservations.each do |resa| %>
   <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
     <h3>You have a reservation for this atelier</h3>
     <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>

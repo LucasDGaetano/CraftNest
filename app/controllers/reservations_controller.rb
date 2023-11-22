@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to atelier_path(@atelier)
     else
-      render "../ateliers/show", status: :unprocessable_entity
+      render "ateliers/show", status: :unprocessable_entity
     end
   end
 
