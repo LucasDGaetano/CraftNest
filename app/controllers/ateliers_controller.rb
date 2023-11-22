@@ -3,6 +3,7 @@ class AteliersController < ApplicationController
 
   def index
     @ateliers = Atelier.all
+    @sum = 0.0
   end
 
   def show

@@ -45,9 +45,9 @@
     <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
 
     <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
+    <%= link_to "more details on this reservation", reservation_path(resa) %>
     <hr>
   <% end %>
 <% end %>
 </div>
-
 <hr>
