@@ -4,13 +4,15 @@
 
   <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
     <% @ateliers.each do |atelier| %>
+    <% sum = 0.0 %>
     <div class="col">
       <%= link_to atelier_path(atelier), class: "text-decoration-none" do %>
-        <div class="card-trip card my-3">
+        <div class="card-trip card h-100 my-3 d-flex">
           <%= cl_image_tag atelier.photo.key, height: 1000, width: 1000, class: "card-img-top" %>
-          <div class="card-trip-infos">
+          <div class="card-trip-infos flex-grow-1">
             <div>
-              <h2><%= atelier.name %></h2>
+              <h2><%= atelier.name %> <% if atelier.reviews.count > 0 %></h2><span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i></span>
+              <% end %>
               <p><%= atelier.location %></p>
             </div>
             <h2 class="card-trip-pricing"><%= atelier.price %> €</h2>
