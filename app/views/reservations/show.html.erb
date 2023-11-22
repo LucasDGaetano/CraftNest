@@ -16,9 +16,7 @@
 <% end %>
 </div>
 <hr>
-SI LA DATE EST DEPASSE ON AFFICHE LE FORM POUR CREER UNE REVIEW
 
-<%= (@reservation.end_date - Date.today).to_i %>
   <% if (@reservation.end_date - Date.today).to_i < 0 %>
     VOTRE RESERVATION EST TERMINEE, GIVE A REVIEW
     <%= simple_form_for [@reservation, @review] do |f| %>
@@ -27,6 +25,14 @@ SI LA DATE EST DEPASSE ON AFFICHE LE FORM POUR CREER UNE REVIEW
       <%= f.button :submit %>
     <% end %>
 
+<% if (@reservation.end_date - Date.today).to_i < 0 %>
+  <h2>VOTRE RESERVATION EST TERMINEE, DONNEZ VOTRE AVIS !</h2>
+  <%= simple_form_for [@reservation, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
   <% end %>
+
+<% end %>
 
 </div>
