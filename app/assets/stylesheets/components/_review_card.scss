@@ -1,0 +1,58 @@
+.reviews {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.review-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.review-card p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.review-card .author {
+  font-weight: bold;
+}
+
+/* Vos styles existants */
+
+/* Style pour les avis sous forme de pastilles */
+.reviews {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.review-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.review-badge {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 50%; /* Pour créer une forme de pastille */
+  width: 200px; /* Ajustez la largeur en fonction du contenu */
+  height: 200px; /* Ajustez la hauteur en fonction du contenu */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-badge p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.review-badge .author {
+  font-weight: bold;
+}
+
