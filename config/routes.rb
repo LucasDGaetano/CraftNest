@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :ateliers do
     resources :reservations, only: [:new, :create]
   end
-
   resources :reservations, only: [:show, :destroy] do
     resources :reviews, only: [:create]
   end
