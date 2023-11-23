@@ -2,18 +2,31 @@
 .banner {
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 650px;
+  position: relative;
   text-align: center;
   color: #fff;
   padding: 100px 20px;
 }
 
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner img {
+  width: 100%;
+  display: block;
+}
+
 .banner h1 {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3em;
   margin-bottom: 20px;
 }
 
 .banner p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.2em;
   margin-bottom: 40px;
 }
