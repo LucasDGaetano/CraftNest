@@ -11,16 +11,16 @@
   <p><%= @atelier.description %></p>
 
 <hr>
-  <%= link_to "return to ateliers", ateliers_path %>
+  <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   <hr>
 
   <% if current_user == @atelier.user %>
     <h4>C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
-    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier) %>
-    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier), class: "btn btn-warning" %>
+    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
   <% else %>
     <div data-controller="toggle-reservations" class="mt-5">
-      <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
+      <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Faire une réservation</button>
       <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
         <h1>Faire une nouvelle réservation</h1>
         <%= simple_form_for [@atelier, @reservation] do |f| %>
@@ -30,7 +30,7 @@
           <%= f.input :end_date,
                   as: :string,
                   input_html: { data: { controller: "datepicker" } } %>
-          <%= f.button :submit %>
+          <%= f.submit "Réservez !", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>
@@ -40,17 +40,15 @@
 
 <hr>
 <div class="container">
+  <% @atelier.reservations.each do |resa| %>
+    <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
+      <h3>Vous avez une réservation pour cet atelier</h3>
+      <h4>La réservation commence dans <%= (resa.start_date - Date.today).to_i %> jours</h4>
+      <h4>et dure <%= (resa.end_date - resa.start_date).to_i %> jours</h4>
 
-<% @atelier.reservations.each do |resa| %>
-  <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
-    <h3>You have a reservation for this atelier</h3>
-    <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>
-    <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
-
-    <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
-    <%= link_to "Voir détails", reservation_path(resa) %>
-    <hr>
+      <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+      <%= link_to "Voir détails", reservation_path(resa) %>
+      <hr>
+    <% end %>
   <% end %>
-<% end %>
 </div>
-<hr>

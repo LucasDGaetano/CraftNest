@@ -21,7 +21,7 @@
             <p>Atelier <%= reservation.atelier.name %></p>
             <p>Du : <%= reservation.start_date %></p>
             <p>Au : <%= reservation.end_date %></p>
-            <%= link_to "Supprimer cette réservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+            <%= link_to "Supprimer cette réservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
             <hr>
           <% end %>
         </ul>
@@ -39,8 +39,8 @@
             <p>Adresse : <%= atelier.location %></p>
             <p>Prix (€) : <%= atelier.price %></p>
             <p>Categorie : <%= atelier.category %></p>
-            <%= link_to "Changer les informations de l'atelier", edit_atelier_path(atelier) %>
-            <%= link_to "Supprimer cet atelier", atelier_path(atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+            <%= link_to "Changer les informations de l'atelier", edit_atelier_path(atelier), class: "btn btn-warning" %>
+            <%= link_to "Supprimer cet atelier", atelier_path(atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
             <hr>
           </li>
         <% end %>
