@@ -18,6 +18,12 @@ class AteliersController < ApplicationController
   def show
     @reservation = Reservation.new
     @reservations = Reservation.all
+    @marker = @atelier.geocoded 
+      {
+        lat: atelier.latitude,
+        lng: atelier.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { atelier: atelier })
+      }
   end
 
   def new
