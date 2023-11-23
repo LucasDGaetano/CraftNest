@@ -32,17 +32,26 @@
     <% sum = 0.0 %>
     <div class="col">
       <%= link_to atelier_path(atelier), class: "text-decoration-none" do %>
-        <div class="card-trip card h-100 my-3 d-flex">
+        <div class="card-trip card my-3 d-flex">
           <%= cl_image_tag atelier.photo.key, height: 1000, width: 1000, class: "card-img-top" %>
           <div class="card-trip-infos flex-grow-1">
-            <div>
-              <h2><%= atelier.name %> <% if atelier.reviews.count > 0 %></h2><span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i></span>(<%= atelier.reviews.count %>)
+              <h2><%= atelier.name %></h2>
+              <% if atelier.reviews.count > 0 %>
+                <span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i>(<%= atelier.reviews.count %>)</span>
+                <% else %>
+                <p><small>Pas encore de note</small></p>
               <% end %>
-              <p><%= atelier.location %></p>
-            </div>
-            <h2 class="card-trip-pricing"><%= atelier.price %> €/jour</h2>
-            <p><%= atelier.surface %> m²</p>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <p><%= atelier.location %> - <%= atelier.category %> </p>
+              <h2 class="card-trip-pricing"><%= atelier.price %> €/jour</h2>
+              <p class="card-trip-pricing"><%= atelier.surface %> m²</p>
+              <% if atelier.user.profile_pic.attached? %>
+                <%= cl_image_tag atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+              <% else %>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% end %>
+          </div>
+        <div class="card-footer">
+         <small class="text-body-secondary">Posté le <%= atelier.created_at.day %>/<%= atelier.created_at.month %>/<%= atelier.created_at.year %></small>
         </div>
       </div>
         <% end %>

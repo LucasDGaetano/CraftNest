@@ -2,6 +2,7 @@ class User < ApplicationRecord
 has_many :reservations
 has_many :ateliers
 has_many :reviews
+has_one_attached :profile_pic
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 validates :email, presence: true, length: { minimum: 10, maximum: 30 },format: { with: VALID_EMAIL_REGEX },uniqueness: { case_sensitive: false }
