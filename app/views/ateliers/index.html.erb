@@ -11,11 +11,12 @@
           <%= cl_image_tag atelier.photo.key, height: 1000, width: 1000, class: "card-img-top" %>
           <div class="card-trip-infos flex-grow-1">
             <div>
-              <h2><%= atelier.name %> <% if atelier.reviews.count > 0 %></h2><span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i></span>
+              <h2><%= atelier.name %> <% if atelier.reviews.count > 0 %></h2><span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i></span>(<%= atelier.reviews.count %>)
               <% end %>
               <p><%= atelier.location %></p>
             </div>
-            <h2 class="card-trip-pricing"><%= atelier.price %> €</h2>
+            <h2 class="card-trip-pricing"><%= atelier.price %> €/jour</h2>
+            <p><%= atelier.surface %> m²</p>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
       </div>

@@ -43,7 +43,7 @@ class AteliersController < ApplicationController
   private
 
   def atelier_params
-    params.require('atelier').permit(:name, :location, :category, :price, :photo)
+    params.require('atelier').permit(:name, :location, :category, :price, :photo, :surface, :description)
   end
 
   def set_atelier
