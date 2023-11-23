@@ -1,16 +1,21 @@
-<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>');">
-  <div class="container">
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>'); position: relative;">
+  <div class="container h-100">
   <%# text here %>
     <h1><%= @atelier.name %></h1>
     <p><strong><%= @atelier.description %></strong></p>
-      <div class="d-flex">
-      <h2> Propriétaire : <%= @atelier.user.username %></h2>
-      <% if @atelier.user.profile_pic.attached? %>
-        <%= cl_image_tag @atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
-      <% else %>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    <% end %>
-  </div>
+
+      <div class="d-flex align-items-center position-absolute bottom-0 start-0 m-3">
+      <div class="me-2">
+          <p class="m-0"> Proposé par <%= @atelier.user.username %>  </p>
+      </div>
+      <div>
+          <% if @atelier.user.profile_pic.attached? %>
+            <%= cl_image_tag @atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+          <% else %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
