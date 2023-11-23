@@ -1,15 +1,23 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, height: 1000, crop: :fill %>');">
+  <div class="container">
+  <%# text here %>
+    <p><strong><%= @atelier.description %></strong></p>
+  </div>
+</div>
 
 <div class="container">
-  <h1>ATELIER <%= @atelier.name %></h1>
+  <div class ="row">
 
-  <h2> propriétaire : <%= @atelier.user.username %></h2>
-  <h2> prix : <%= @atelier.price %></h2>
-  <h2> lieu : <%= @atelier.location %></h2>
-  <h2> categorie : <%= @atelier.category %></h2>
+    <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
 
-  <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
-  <p><%= @atelier.description %></p>
-
+    <div class="col-6">
+      <h1>ATELIER <%= @atelier.name %></h1>
+      <h2> propriétaire : <%= @atelier.user.username %></h2>
+      <h2> prix : <%= @atelier.price %></h2>
+      <h2> lieu : <%= @atelier.location %></h2>
+      <h2> categorie : <%= @atelier.category %></h2>
+    </div>
+  </div>
   <hr>
   <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   <hr>
