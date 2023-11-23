@@ -1,22 +1,57 @@
 <div class="container">
-  <h1 class="d-flex justify-content-between">ALL THE ATELIERS (<%= @ateliers.count %>)   <%= link_to "Create a new atelier", new_atelier_path, style:'color:white', class:'btn btn-success'%></h1>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: ateliers_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Cherchez l'atelier de vos rêves"
+          %>
+        <%= submit_tag "Recherche", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class ="mt-3">
+    <% if @ateliers.count == 0 %>
+        <h1 class="d-flex justify-content-between"> Nous n'avons pas trouvé d'atelier pour vous
+      <% else %>
+          <%  if params[:query].present?  %>
+              <h1 class="d-flex justify-content-between">Les ateliers qui correspondent à vos critères(<%= @ateliers.count %>)
+            <% else %>
+              <h1 class="d-flex justify-content-between">Tous nos ateliers (<%= @ateliers.count %>)
+            <% end %>
+    <% end %>
+    <%= link_to "Ajoutez votre atelier !", new_atelier_path, style:'color:white', class:'btn btn-success'%></h1>
+  </div>
 
 
-  <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
     <% @ateliers.each do |atelier| %>
     <% sum = 0.0 %>
     <div class="col">
       <%= link_to atelier_path(atelier), class: "text-decoration-none" do %>
-        <div class="card-trip card h-100 my-3 d-flex">
+        <div class="card-trip card my-3 d-flex">
           <%= cl_image_tag atelier.photo.key, height: 1000, width: 1000, class: "card-img-top" %>
           <div class="card-trip-infos flex-grow-1">
-            <div>
-              <h2><%= atelier.name %> <% if atelier.reviews.count > 0 %></h2><span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i></span>
+              <h2><%= atelier.name %></h2>
+              <% if atelier.reviews.count > 0 %>
+                <span class="review" style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i>(<%= atelier.reviews.count %>)</span>
+                <% else %>
+                <span class="review"><p><small>Pas encore d'avis</small></p></span>
               <% end %>
-              <p><%= atelier.location %></p>
-            </div>
-            <h2 class="card-trip-pricing"><%= atelier.price %> €</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <p class="location"><small><%= atelier.location %></small></p>
+              <h2 class="card-trip-pricing"><%= atelier.price %> €/jour</h2>
+              <p class ="surface"><%= atelier.category %> - <%= atelier.surface %> m²</p>
+              <% if atelier.user.profile_pic.attached? %>
+                <%= cl_image_tag atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+              <% else %>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% end %>
+          </div>
+        <div class="card-footer">
+         <small class="text-body-secondary">Posté le <%= atelier.created_at.day %>/<%= atelier.created_at.month %>/<%= atelier.created_at.year %></small>
         </div>
       </div>
         <% end %>
