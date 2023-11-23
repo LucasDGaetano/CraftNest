@@ -39,35 +39,54 @@
 }
 
 .card {
-  width: 300px;
+  width: 350px;
+  height: 500px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 20px;
+  text-align: center;
 }
 
 .card img {
-  width: 100%;
+  width: 300px;
+  height: 250px;
   border-radius: 6px;
   margin-bottom: 10px;
 }
 
 .card h3 {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-bottom: 10px;
 }
 
 .card p {
-  margin-bottom: 20px;
+  font-size: 1em;
+  margin-bottom: 10px;
 }
 
+.card .button {
+  display: inline-block;
+  padding: 8px 16px; /* Ajustez le padding selon vos besoins */
+  text-decoration: none;
+  background-color: $orange; /* Assurez-vous que $orange est défini ailleurs dans votre code */
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-family: "Work Sans", "Helvetica", "sans-serif";
+  margin: -6px;
+  width: 150px !important;
+}
+
+.card:hover {
+  cursor: pointer;
+}
 /* Style pour les cartes (cards) des ateliers */
 .workshops {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 50px 0;
+  padding: 50px;
 }
-
