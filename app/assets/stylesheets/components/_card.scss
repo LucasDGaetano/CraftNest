@@ -89,7 +89,7 @@
 
 //-------------------
 
-.card {
+.carte {
   width: 350px;
   height: 500px;
   background-color: #fff;
@@ -100,24 +100,24 @@
   text-align: center;
 }
 
-.card img {
+.carte img {
   width: 300px;
   height: 250px;
   border-radius: 6px;
   margin-bottom: 10px;
 }
 
-.card h3 {
+.carte h3 {
   font-size: 1.3em;
   margin-bottom: 10px;
 }
 
-.card p {
+.carte p {
   font-size: 1em;
   margin-bottom: 10px;
 }
 
-.card .button {
+.carte .button {
   display: inline-block;
   padding: 8px 16px; /* Ajustez le padding selon vos besoins */
   text-decoration: none;
@@ -130,10 +130,10 @@
   width: 150px !important;
 }
 
-.card:hover {
+.carte:hover {
   cursor: pointer;
 }
-/* Style pour les cartes (cards) des ateliers */
+/* Style pour les cartes (cartes) des ateliers */
 .workshops {
   display: flex;
   flex-wrap: wrap;

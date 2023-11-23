@@ -31,4 +31,42 @@ body, h1, h2, p, ul, li {
   margin-bottom: 15px;
 }
 
+.mySlides {
+  display: none;
+}
 
+.user-reviews {
+  margin-top: 20px;
+}
+
+.user-review {
+  position: relative;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #F5F5F5;
+  border-radius: 8px;
+}
+
+.quote {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5em; /* Ajustez la taille des guillemets ici */
+  color: #DB7C26; /* Changez la couleur des guillemets ici */
+}
+
+.review-text {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-review footer {
+  margin-top: 10px;
+}
+
+.user-reviews h3{
+  margin-top: 20px;
+  text-align: center;
+}
