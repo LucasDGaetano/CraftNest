@@ -27,7 +27,7 @@
   </div>
 
 
-  <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
     <% @ateliers.each do |atelier| %>
     <% sum = 0.0 %>
     <div class="col">
@@ -37,13 +37,13 @@
           <div class="card-trip-infos flex-grow-1">
               <h2><%= atelier.name %></h2>
               <% if atelier.reviews.count > 0 %>
-                <span style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i>(<%= atelier.reviews.count %>)</span>
+                <span class="review" style="color: #f7e62b;"><% atelier.reviews.each {|review| sum += review[:rating] } %> <%= sum / atelier.reviews.count %><i class="fa-solid fa-star"></i>(<%= atelier.reviews.count %>)</span>
                 <% else %>
-                <p><small>Pas encore de note</small></p>
+                <span class="review"><p><small>Pas encore d'avis</small></p></span>
               <% end %>
-              <p><%= atelier.location %> - <%= atelier.category %> </p>
+              <p class="location"><small><%= atelier.location %></small></p>
               <h2 class="card-trip-pricing"><%= atelier.price %> €/jour</h2>
-              <p class="card-trip-pricing"><%= atelier.surface %> m²</p>
+              <p class ="surface"><%= atelier.category %> - <%= atelier.surface %> m²</p>
               <% if atelier.user.profile_pic.attached? %>
                 <%= cl_image_tag atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
               <% else %>

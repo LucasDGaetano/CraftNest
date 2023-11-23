@@ -14,35 +14,54 @@
   }
 
   .card-trip-infos {
-    padding: 16px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    height: calc(320px - 200px); // La hauteur restante après avoir soustrait la hauteur de l'image
-    justify-content: space-between; // Répartit l'espace entre les éléments de manière égale
+    justify-content: start; // Répartit l'espace entre les éléments de manière égale
 
-    h2, .card-trip-pricing {
+    h2 {
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 16px;
+      margin-bottom: 4px;
+    }
+
+    span {
+      // Conteneur pour les évaluations
+      font-size: 14px;
+      margin-top: 4px; // réduit l'espace au-dessus des évaluations
+      display: block; // assurez-vous que les évaluations sont sur leur propre ligne
     }
 
     .card-trip-pricing {
-      align-self: flex-end; // Aligner le prix en bas à droite
+      font-size: 18px;
+      font-weight: bold;
+      align-self: flex-end; // aligne le prix à droite
+      order: 4;
     }
 
     p {
-      // styles pour les <p> généraux
-      &:last-of-type {
-        align-self: flex-end; // Cela va aligner la surface en dessous du prix
-        position: static; // changez de absolute à static pour que la surface ne soit pas positionnée par rapport au footer
-        order: 2; // Cela va assurer que la surface vient après le prix dans la disposition
-        margin-bottom: 32px; // Augmentez la marge inférieure pour donner plus d'espace au-dessus du footer
-      }
+      font-size: 14px; // ajustez selon vos besoins
+      margin: 4px 0; // réduit l'espace autour de la localisation et de la surface
+    }
 
-      &:first-of-type {
-        // styles pour le premier <p> (typiquement la ville)
-        order: 1; // Cela va assurer que la ville vient avant la surface dans la disposition
-      }
+    .review, .location, .surface {
+      // Styles communs pour les reviews, la localisation et la surface
+      font-size: 14px;
+      margin: 4px 0; // espace uniforme autour de ces éléments
+    }
+
+    .location {
+      order: 2; // Assurez-vous que la ville vient après les évaluations
+    }
+
+    .surface {
+      order: 3; // Assurez-vous que la surface vient après le prix
+      align-self: flex-start; // Alignez la surface au début du conteneur
+    }
+
+    .review {
+      // Style pour les reviews
+      order: 1;
     }
   }
 
@@ -54,14 +73,15 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40px; // Hauteur fixe pour le footer
+    height: auto; // Hauteur fixe pour le footer
+    padding: 4px 16px;
   }
 
   .card-trip-user {
     border-radius: 50%;
     position: absolute;
     right: 16px;
-    top: 16px;
+    top: auto;
     width: 40px; // Taille fixe pour l'avatar
     height: 40px; // Taille fixe pour l'avatar
   }
