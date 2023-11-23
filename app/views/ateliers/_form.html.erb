@@ -1,10 +1,40 @@
-<%= simple_form_for @atelier do |f| %>
-<%= f.input :name %>
-<%= f.input :location,
-  input_html: {data: {location_autocomplete_target: "location"}, class: "d-none"},
-  wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-<%= f.input :price %>
-<%= f.input :category, collection: Atelier::CATEGORIES %>
-<%= f.input :photo, as: :file %>
-<%= f.submit "Create atelier !" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for @atelier do |f| %>
+    <div class="input-group">
+      <div class="input-field">
+        <h6>Nom</h6>
+        <%= f.input :name, label: false %>
+      </div>
+      <div class="input-field">
+        <h6>Lieu</h6>
+        <%= f.input :location,
+          label: false,
+          input_html: {data: {location_autocomplete_target: "location"}, class: "d-none"},
+          wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: 'field'} %>
+      </div>
+      <div class="input-field">
+        <h6>Catégorie</h6>
+        <%= f.input :category, collection: Atelier::CATEGORIES, label: false %>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-field">
+        <h6>Prix</h6>
+        <%= f.input :price, label: false %>
+      </div>
+      <div class="input-field">
+        <h6>Surface</h6>
+        <%= f.input :surface, label: false %>
+      </div>
+    </div>
+
+    <h6>Description</h6>
+    <%= f.input :description, label: false %>
+
+    <h6>Photo</h6>
+    <%= f.input :photo, as: :file, label: false %>
+
+    <%= f.submit "Créer votre atelier !" %>
+  <% end %>
+</div>

@@ -8,33 +8,33 @@
   <h2> categorie : <%= @atelier.category %></h2>
 
   <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
+  <p><%= @atelier.description %></p>
 
 <hr>
   <%= link_to "return to ateliers", ateliers_path %>
-  <% if current_user == @atelier.user %>
-    <%= link_to "edit this atelier", edit_atelier_path(@atelier) %>
-    <%= link_to "remove this atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
-    <% end %>
-
   <hr>
 
-  <div data-controller="toggle-reservations" class="mt-5">
-    <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
-
-    <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
-      <h1>Faire une nouvelle réservation</h1>
-      <%= simple_form_for [@atelier, @reservation] do |f| %>
-        <%= f.input :start_date,
-                as: :string,
-                input_html: { data: { controller: "datepicker" } } %>
-        <%= f.input :end_date,
-                as: :string,
-                input_html: { data: { controller: "datepicker" } } %>
-        <%= f.button :submit %>
-      <% end %>
+  <% if current_user == @atelier.user %>
+    <h4>C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
+    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier) %>
+    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+  <% else %>
+    <div data-controller="toggle-reservations" class="mt-5">
+      <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
+      <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
+        <h1>Faire une nouvelle réservation</h1>
+        <%= simple_form_for [@atelier, @reservation] do |f| %>
+          <%= f.input :start_date,
+                  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :end_date,
+                  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
     </div>
-  </div>
-
+<% end %>
 
 </div>
 
@@ -48,7 +48,7 @@
     <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
 
     <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
-    <%= link_to "more details on this reservation", reservation_path(resa) %>
+    <%= link_to "Voir détails", reservation_path(resa) %>
     <hr>
   <% end %>
 <% end %>

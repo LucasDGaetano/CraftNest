@@ -15,7 +15,11 @@
           </li>
           <li class="nav-item dropdown ms-auto">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if current_user.profile_pic.attached? %>
+            <%= cl_image_tag current_user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "avatar", alt: "dropdown menu" %>
+          <% else %>
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+         <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Accueil", root_path, class: "dropdown-item" %>
