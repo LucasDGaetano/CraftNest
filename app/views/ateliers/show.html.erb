@@ -10,7 +10,7 @@
   <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
   <p><%= @atelier.description %></p>
 
-<hr>
+  <hr>
   <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   <hr>
 
@@ -21,24 +21,26 @@
   <% else %>
     <div data-controller="toggle-reservations" class="mt-5">
       <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Faire une réservation</button>
-      <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
+      <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none mb-3">
         <h1>Faire une nouvelle réservation</h1>
         <%= simple_form_for [@atelier, @reservation] do |f| %>
+        <p>Date de début</p>
           <%= f.input :start_date,
                   as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
+                  input_html: { data: { controller: "datepicker" } },
+                  label: false %>
+        <p>Date de fin</p>
           <%= f.input :end_date,
                   as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
-          <%= f.submit "Réservez !", class: "btn btn-success" %>
+                  input_html: { data: { controller: "datepicker" } },
+                  label: false%>
+          <%= f.submit "Réservez !", class: "btn btn-success mb-5" %>
         <% end %>
       </div>
     </div>
-<% end %>
-
+  <% end %>
 </div>
 
-<hr>
 <div class="container">
   <% @atelier.reservations.each do |resa| %>
     <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
