@@ -1,33 +1,39 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, height: 1000, crop: :fill %>');">
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>');">
   <div class="container">
   <%# text here %>
+    <h1><%= @atelier.name %></h1>
     <p><strong><%= @atelier.description %></strong></p>
+      <div class="d-flex">
+      <h2> Propriétaire : <%= @atelier.user.username %></h2>
+      <% if @atelier.user.profile_pic.attached? %>
+        <%= cl_image_tag @atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+      <% else %>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <% end %>
+  </div>
   </div>
 </div>
 
 <div class="container">
-  <div class ="row">
-
     <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
 
-    <div class="col-6">
-      <h1>ATELIER <%= @atelier.name %></h1>
-      <h2> propriétaire : <%= @atelier.user.username %></h2>
-      <h2> prix : <%= @atelier.price %></h2>
-      <h2> lieu : <%= @atelier.location %></h2>
+      <h2> Prix : <%= @atelier.price %> €/jour</h2>
+      <h2> Lieu : <%= @atelier.location %></h2>
+      <%# rajouter une map ? %>
       <h2> categorie : <%= @atelier.category %></h2>
-    </div>
-  </div>
   <hr>
   <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   <hr>
 
   <% if current_user == @atelier.user %>
+  <div class="my-5">
     <h4>C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
     <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier), class: "btn btn-warning" %>
     <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
+  </div>
+
   <% else %>
-    <div data-controller="toggle-reservations" class="mt-5">
+    <div data-controller="toggle-reservations" class="my-5">
       <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Faire une réservation</button>
       <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none mb-3">
         <h1>Faire une nouvelle réservation</h1>
