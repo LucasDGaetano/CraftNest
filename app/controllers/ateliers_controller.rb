@@ -4,6 +4,14 @@ class AteliersController < ApplicationController
 
   def index
     @ateliers = Atelier.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        name @@ :query
+        OR category @@ :query
+        OR location @@ :query
+      SQL
+      @ateliers = @ateliers.where(sql_subquery, query: "%#{params[:query]}%")
+    end
     @sum = 0.0
   end
 
