@@ -2,20 +2,45 @@
 .banner {
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 650px;
+  position: relative;
   text-align: center;
   color: #fff;
-  padding: 100px 20px;
+  // padding: 100px 20px;
+}
+
+.banner-on-top {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 30px;
+  height: 930px;
+}
+
+.banner img {
+  width: 100%;
+  display: block;
 }
 
 .banner h1 {
+  font-family:'Kurale', serif;
   font-size: 3em;
   margin-bottom: 20px;
 }
 
 .banner p {
+  font-family: "Work Sans", "Helvetica", "sans-serif";
   font-size: 1.2em;
-  margin-bottom: 40px;
+  margin: 18px;
+  padding: 7px;
+}
+
+.banner-on-top p {
+  margin: 18px;
+  padding: 7px;
 }
 
 .banner-show {
