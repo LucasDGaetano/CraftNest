@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.2"
 gem "devise"
 gem "cloudinary"
 gem "dotenv-rails"
+gem "geocoder"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
