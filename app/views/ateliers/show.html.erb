@@ -83,7 +83,7 @@
         <h4>La réservation commence dans <%= (resa.start_date - Date.today).to_i %> jours</h4>
         <h4>et dure <%= (resa.end_date - resa.start_date).to_i %> jours</h4>
 
-        <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-warning text-center" %>
+        <%= link_to "Annuler votre réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger text-center" %>
         <%= link_to "Voir détails", reservation_path(resa), class: "btn btn-primary text-center" %>
       <% end %>
     <% end %>
