@@ -6,6 +6,7 @@
   top: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  margin-bottom: 20px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -31,4 +32,15 @@ nav ul li {
 nav ul li a {
   color: #fff;
   text-decoration: none;
+}
+
+.navbar-lewagon .navbar-brand,
+.navbar-lewagon .navbar-nav {
+  margin-right: 50px; /* Ajustez la marge droite selon votre préférence */
+}
+
+/* Ajustement pour rapprocher les éléments sur la gauche */
+.navbar-lewagon .navbar-brand,
+.navbar-lewagon .navbar-nav {
+  margin-left: 50px; /* Ajustez la marge gauche selon votre préférence */
 }

@@ -14,4 +14,14 @@
   background-color: #DB7C26;
 }
 
-
+.button-dashbord {
+  width: 150px;
+  height: 100px;
+  border-radius: 4px;
+  font-family: "Work Sans", "Helvetica", "sans-serif";
+  color: $light-gray;
+  text-decoration: none;
+  background-color: $orange;
+  transition: background-color 0.3s;
+  padding: 5px;
+}
