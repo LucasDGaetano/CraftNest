@@ -18,7 +18,7 @@ User.delete_all
 puts "CLEANED DATABASE"
 
 user_file1 = URI.open("https://avatars.githubusercontent.com/u/145020827?v=4")
-user1 = User.create!(username: "ZairaCosman", email: "zairacosman@hotmail.fr", password: "lewagon20012023", last_name: "Cosman", name: "Zaira")
+user1 = User.create!(username: "ZairaCosman", email: "zairacosman@hotmail.fr", password: "lewagon20012023", last_name: "Zaïra", name: "Cosman")
 user1.profile_pic.attach(io: user_file1, filename: "user1.png", content_type: "image/png")
 user1.save!
 
