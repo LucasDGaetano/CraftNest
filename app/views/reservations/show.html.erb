@@ -41,38 +41,24 @@
     <div class="d-flex justify-content-center align-items-center">
       <% @reviews.each do |review| %>
         <% if review.reservation_id == @reservation.id %>
-<<<<<<< HEAD
-          <h3>De : <%= review.user.username %> - <span style="color: #f7e62b;"><%= review.rating %> <i class="fa-solid fa-star"></i></span></h3>
-=======
           <h3>De : <%= review.user.username %> - <span style="color: #F7E62B;"><%= review.rating %> <i class="fa-solid fa-star"></i></span></h3>
->>>>>>> master
           <h4><%= review.content %></h4>
           <hr>
         <% end %>
       <% end %>
     </div>
   </div>
-<<<<<<< HEAD
-<hr>
-  <div class="d-flex justify-content-center">
-    <% if (@reservation.end_date - Date.today).to_i < 0 %>
-      <h2>VOTRE RESERVATION EST TERMINEE, DONNEZ VOTRE AVIS !</h2>
-=======
   <div class="d-flex justify-content-center">
     <% if (@reservation.end_date - Date.today).to_i < 0 %>
     <hr>
       <h2>Votre réservation est terminée, n'hésitez pas à nous donner votre avis sur l'atelier de <%= @reservation.atelier.user.username %></h2>
->>>>>>> master
       <%= simple_form_for [@reservation, @review] do |f| %>
         <%= f.input :rating %>
         <%= f.input :content %>
         <%= f.button :submit %>
       <% end %>
-<<<<<<< HEAD
-=======
       <% else %>
         <%= link_to "Annuler votre réservation ", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger text-center mb-5" %>
->>>>>>> master
     <% end %>
   </div>
 </div>
