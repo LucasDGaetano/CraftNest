@@ -81,27 +81,27 @@ atelier2.photo.attach(io: file2, filename: "atelier2.png", content_type: "image/
 atelier2.save!
 
 file3 = URI.open("https://www.tiaramilo.com/build/images/static_content/joaillerie/atelier-joaillerie-bague-flamme-soudure.jpg")
-atelier3 = Atelier.new(name: "Le doux repos", category: "Joaillerie", location: "Lyon", price: 11, user: user3, surface: 15, description: "Un atelier comprenant tout le matériel necessaire au polissage de gemmes !")
+atelier3 = Atelier.new(name: "Pour une brillance éternelle", category: "Joaillerie", location: "Lyon", price: 11, user: user3, surface: 15, description: "Un atelier comprenant tout le matériel necessaire au polissage de gemmes !")
 atelier3.photo.attach(io: file3, filename: "atelier3.png", content_type: "image/png")
 atelier3.save!
 
 file4 = URI.open("https://atelierlapatente.org/wp/wp-content/uploads/2020/05/Panorama.jpg")
-atelier4 = Atelier.new(name: "Premier mercredi", category: "Bois", location: "Lille", price: 14, user: user4, surface: 30, description: "Un grand atelier comprenant tout le materiel pour menuiserie, sculpture sur bois. Materiel de vernissage en option")
+atelier4 = Atelier.new(name: "Le charpentier du Nord", category: "Bois", location: "Lille", price: 14, user: user4, surface: 30, description: "Un grand atelier comprenant tout le materiel pour menuiserie, sculpture sur bois. Materiel de vernissage en option")
 atelier4.photo.attach(io: file4, filename: "atelier4.png", content_type: "image/png")
 atelier4.save!
 
 file5 = URI.open("https://www.arielledegasquet.com/wp-content/uploads/2017/03/170913__Arielle-de-Gasquet-atelier-ceramique__DSF8623.jpg")
-atelier5 = Atelier.new(name: "Le four", category: "Céramique", location: "Rennes", price: 8, user: user5, surface: 25, description: "Un petit atelier plein de charme avec une kitchenette et une cour extérieur, four a ceramique inclus")
+atelier5 = Atelier.new(name: "Pour une poterie de plus", category: "Céramique", location: "Rennes", price: 8, user: user5, surface: 25, description: "Un petit atelier plein de charme avec une kitchenette et une cour extérieur, four a ceramique inclus")
 atelier5.photo.attach(io: file5, filename: "atelier5.png", content_type: "image/png")
 atelier5.save!
 
 file6 = URI.open("https://photos.infolocale.fr/infoLocale/annonce/2022/0824/7648404/_1.jpg")
-atelier6 = Atelier.new(name: "Tu m'as vu", category: "Peinture", location: "Angers", price: 10, user: user6, surface: 25, description: "Un petit atelier plein de charme avec une kitchenette. Les gouaches et toiles sont inclus mais pas les pinceaux !")
+atelier6 = Atelier.new(name: "Tu m'as vu, tu m'as peinds", category: "Peinture", location: "Angers", price: 10, user: user6, surface: 25, description: "Un petit atelier plein de charme avec une kitchenette. Les gouaches et toiles sont inclus mais pas les pinceaux !")
 atelier6.photo.attach(io: file6, filename: "atelier6.png", content_type: "image/png")
 atelier6.save!
 
 file7 = URI.open("https://www.infrarouge.fr/wp-content/uploads/2017/10/Messika-immersion-joaillerie-Euge%CC%81nie-Martinez-011.jpg")
-atelier7 = Atelier.new(name: "Chère enfant", category: "Joaillerie", location: "Compiègne", price: 17, user: user7, surface: 10, description: "Un petit atelier comprenant tout le matériel pour incrustation de pierres et gemmes")
+atelier7 = Atelier.new(name: "Chez Bertrand et fils", category: "Joaillerie", location: "Compiègne", price: 17, user: user7, surface: 10, description: "Un petit atelier comprenant tout le matériel pour incrustation de pierres et gemmes")
 atelier7.photo.attach(io: file7, filename: "atelier7.png", content_type: "image/png")
 atelier7.save!
 
@@ -134,5 +134,8 @@ review2 = Review.create!(user: user3, reservation: reservation2, rating: 4, cont
 review3 = Review.create!(user: user4, reservation: reservation3, rating: 3, content: "Coup ci coup ça. Je suis assez mitigé franchement")
 review4 = Review.create!(user: user9, reservation: reservation4, rating: 1, content: "Extrêmement déçu. J'ai perdu de l'argent.")
 review5 = Review.create!(user: user10, reservation: reservation5, rating: 5, content: "Incroyable et surtout vrai")
+review6 = Review.create!(user: user7, reservation: reservation3, rating: 4, content: "La propriétaire est très gentille, elle sert de très bons thés")
+review7 = Review.create!(user: user2, reservation: reservation3, rating: 5, content: "Un véritable must pour les céramistes. Le lieu est top, je recommande!")
+review8 = Review.create!(user: user5, reservation: reservation3, rating: 5, content: "Une activité historique, pour une ville historique")
 
 puts "CREATED REVIEWS"
