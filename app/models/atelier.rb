@@ -10,6 +10,8 @@ class Atelier < ApplicationRecord
 
   validates :name, presence: true, length: { in: 6..40 }
   validates :location, presence: true
+  validates :surface, presence: true
+  validates :description, presence: true, length: { minimum: 20 }
   validates :photo, presence: true
   validates :price, presence: true, comparison: { greater_than: 0 }
   validates :category, inclusion: { in: CATEGORIES }

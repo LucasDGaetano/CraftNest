@@ -4,6 +4,14 @@ class AteliersController < ApplicationController
 
   def index
     @ateliers = Atelier.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        name @@ :query
+        OR category @@ :query
+        OR location @@ :query
+      SQL
+      @ateliers = @ateliers.where(sql_subquery, query: "%#{params[:query]}%")
+    end
     @sum = 0.0
   end
 
@@ -43,7 +51,7 @@ class AteliersController < ApplicationController
   private
 
   def atelier_params
-    params.require('atelier').permit(:name, :location, :category, :price, :photo)
+    params.require('atelier').permit(:name, :location, :category, :price, :photo, :surface, :description)
   end
 
   def set_atelier

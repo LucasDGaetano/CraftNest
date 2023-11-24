@@ -60,6 +60,11 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
+    <div class="col-md-4">
+      <p>Photo de profil</p>
+      <%= f.input :profile_pic,
+        label: false, as: :file  %>
+    </div>
   </div>
 
   <div class="form-actions">
