@@ -1,13 +1,13 @@
 <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>'); position: relative;">
   <div class="container h-100 ">
  <div class="container d-flex justify-content-center">
-    <h1 class="banner-title text-start pt-3"><%= @atelier.name %></h1>
+    <h1 class="banner-title text-start pt-5 mt-5" style="font-size: 52px;"><%= @atelier.name %></h1>
   </div>
 
   <!-- Conteneur Bootstrap pour la description au centre de la bannière -->
   <div class="container h-100 d-flex flex-column justify-content-center">
     <div class="mt-auto mb-auto"> <!-- Ceci pousse la description vers le centre -->
-      <p class="banner-description text-center"><strong><%= @atelier.description %></strong></p>
+      <p class="banner-description text-center" style="font-size: 20px;"><strong><%= @atelier.description %></strong></p>
     </div>
   </div>
 
@@ -28,12 +28,15 @@
 
 <div class="container">
     <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
-
-      <h4> Prix : <%= @atelier.price %> €/jour</h4>
-      <h4> Lieu : <%= @atelier.location %></h4>
+    <div class="my-3">
+    <h4>Informations :</h4>
+      <h5> Prix : <%= @atelier.price %> €/jour</h5>
+      <h5> Lieu : <%= @atelier.location %></h5>
       <%# rajouter une map ? %>
-      <h4> categorie : <%= @atelier.category %></h4>
-  <hr>
+      <h5> Catégorie : <%= @atelier.category %></h5>
+      <hr>
+    </div>
+
   <h2>L'atelier se situe ici :</h2>
   <div class="container d-flex justify-content-center">
     <div style="width: 600px; height: 400px;"
