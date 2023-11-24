@@ -38,8 +38,14 @@
             <p>Adresse : <%= atelier.location %></p>
             <p>Prix (€) : <%= atelier.price %></p>
             <p>Categorie : <%= atelier.category %></p>
+<<<<<<< HEAD
             <a href="<%= edit_atelier_path(atelier) %>" class="button-dashbord">Modifier</a>
             <a href="<%= atelier_path(atelier) %>" class="button-dashbord">Supprimer</a>
+=======
+            <%= link_to "Changer les informations de l'atelier", edit_atelier_path(atelier), class: "btn btn-warning" %>
+            <%= link_to "Supprimer cet atelier", atelier_path(atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
+            <hr>
+>>>>>>> 0ff05203249fecbe81684fdea7acb9da691b6007
           </li>
         <% end %>
         </ul>
