@@ -15,6 +15,8 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="carte-dashboard">
+    <img src="https://www.tiaramilo.com/build/images/static_content/joaillerie/atelier-joaillerie-bague-flamme-soudure.jpg" alt="Atelier 1">
+
       <% if @user.reservations.any? %>
           <% @user.reservations.each do |reservation| %>
               <p>Atelier <%= reservation.atelier.name %></p>
@@ -30,29 +32,22 @@
   </div>
 
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <div class="carte-dashboard">
     <% if @user.ateliers.any? %>
         <ul>
         <% @user.ateliers.each do |atelier| %>
-            <p>Nom : <%= atelier.name %></p>
-            <p>Adresse : <%= atelier.location %></p>
-            <p>Prix (€) : <%= atelier.price %></p>
-            <p>Categorie : <%= atelier.category %></p>
-<<<<<<< HEAD
-            <a href="<%= edit_atelier_path(atelier) %>" class="button-dashbord">Modifier</a>
-            <a href="<%= atelier_path(atelier) %>" class="button-dashbord">Supprimer</a>
-=======
-            <%= link_to "Changer les informations de l'atelier", edit_atelier_path(atelier), class: "btn btn-warning" %>
-            <%= link_to "Supprimer cet atelier", atelier_path(atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
-            <hr>
->>>>>>> 0ff05203249fecbe81684fdea7acb9da691b6007
-          </li>
+            <div class="carte-dashboard">
+              <p>Nom : <%= atelier.name %></p>
+              <p>Adresse : <%= atelier.location %></p>
+              <p>Prix (€) : <%= atelier.price %></p>
+              <p>Categorie : <%= atelier.category %></p>
+              <a href="<%= edit_atelier_path(atelier) %>" class="button-dashbord">Modifier</a>
+              <a href="<%= atelier_path(atelier) %>" class="button-dashbord">Supprimer</a>
+          </div>
         <% end %>
         </ul>
-        <% else %>
-        <p>Vous n'avez pas d'ateliers.</p>
-        <% end %>
-    </div>
+      <% else %>
+      <p>Vous n'avez pas d'ateliers.</p>
+      <% end %>
  </div>
 
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -62,6 +57,4 @@
               <p>Pseudo : <%= current_user.username %></p>
               <p>Email : <%= current_user.email %></p>
   </div>
-</div>
-
 </div>
