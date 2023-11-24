@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 7rem !important;">
   <%= simple_form_for @atelier do |f| %>
     <div class="input-group">
       <div class="input-field">
@@ -35,6 +35,6 @@
     <h6>Photo</h6>
     <%= f.input :photo, as: :file, label: false %>
 
-    <%= f.submit "Créer votre atelier !" %>
+    <%= f.submit "Ajoutez votre atelier !", class:"btn btn-success" %>
   <% end %>
 </div>
