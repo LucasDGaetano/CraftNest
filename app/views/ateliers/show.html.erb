@@ -28,7 +28,7 @@
 
 <div class="container">
     <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
-    <div class="my-3">
+    <div class="my-3 text-center">
     <h4>Informations :</h4>
       <h5> Prix : <%= @atelier.price %> €/jour</h5>
       <h5> Lieu : <%= @atelier.location %></h5>
@@ -37,42 +37,55 @@
       <hr>
     </div>
 
-  <h2>L'atelier se situe ici :</h2>
+  <h2 class="text-center mb-3">L'atelier se situe ici !</h2>
   <div class="container d-flex justify-content-center">
     <div style="width: 600px; height: 400px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 
-  <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
+  <div class="text-center mt-3">
+    <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
+  </div>
   <hr>
 
   <% if current_user == @atelier.user %>
   <div class="my-5">
-    <h4>C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
-    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier), class: "btn btn-warning" %>
-    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
+    <h4 class="text-center mb-3">C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
+    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier), class: "btn btn-warning text-center" %>
+    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger text-center" %>
   </div>
 
   <% else %>
-    <div data-controller="toggle-reservations" class="my-5">
+    <div data-controller="toggle-reservations" class="my-5 text-center">
       <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Faire une réservation</button>
       <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none mb-3">
-        <h1>Faire une nouvelle réservation</h1>
-        <%= simple_form_for [@atelier, @reservation] do |f| %>
-        <p>Date de début</p>
-          <%= f.input :start_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } },
-                  label: false %>
-        <p>Date de fin</p>
-          <%= f.input :end_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } },
-                  label: false%>
-          <%= f.submit "Réservez !", class: "btn btn-success mb-5" %>
-        <% end %>
+        <h1 class="my-3">Faire une nouvelle réservation</h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <%= simple_form_for [@atelier, @reservation] do |f| %>
+            <div class="d-flex justify-content-center">
+              <div class="p-2">
+                <p>Date de début</p>
+                <%= f.input :start_date,
+                        as: :string,
+                        input_html: { data: { controller: "datepicker" } },
+                        label: false %>
+              </div>
+              <div class="p-2">
+                <p>Date de fin</p>
+                  <%= f.input :end_date,
+                          as: :string,
+                          input_html: { data: { controller: "datepicker" } },
+                          label: false%>
+              </div>
+            </div>
+            <div class="p-2">
+              <%= f.submit "Réservez !", class: "btn btn-success mb-5" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
