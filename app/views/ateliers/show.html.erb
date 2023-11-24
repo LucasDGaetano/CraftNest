@@ -100,6 +100,20 @@
   </div>
 
   <div class="text-center my-3">
+    <% if @atelier.reviews.any? %>
+    <h3>Ce qu'ils en pensent !</h3>
+      <% @atelier.reviews.each do |review| %>
+          <hr>
+        <h6 style="color: #f7e62b;"><%= review.rating %> <i class="fa-solid fa-star"></i></h6>
+        <p>" <%= review.content %> " - <strong><%= review.user.username %></strong></p>
+        <% end %>
+      <% else %>
+      <h3>Cet atelier n'a pas encore de note, allez le réserver pour donner votre avis !</h3>
+    <% end %>
+  </div>
+
+  <div class="text-center my-3">
+  <hr>
     <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   </div>
 </div>
