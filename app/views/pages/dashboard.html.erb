@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<div class="container mt-5" style="margin-top: 7rem !important;">
   <h2> <%= @user.username %></h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation" class="container me-auto">
@@ -14,13 +14,15 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-    <div class="carte-dashboard">
+    <div class="carte">
+    <img src="https://www.tiaramilo.com/build/images/static_content/joaillerie/atelier-joaillerie-bague-flamme-soudure.jpg" alt="Atelier 1">
+
       <% if @user.reservations.any? %>
           <% @user.reservations.each do |reservation| %>
-              <p>Atelier <%= reservation.atelier.name %></p>
-              <p>Du : <%= reservation.start_date %></p>
-              <p>Au : <%= reservation.end_date %></p>
-              <a href="<%= reservation_path(reservation) %>" class="button-dashbord">Supprimer cette réservation</a>
+              <h4>Atelier <%= reservation.atelier.name %></h4>
+              <p>Du <%= reservation.start_date %></p>
+              <p>Au <%= reservation.end_date %></p>
+              <%= link_to "Supprimer", reservation_path(reservation), class: "button-dashbord" %>
             <% end %>
           </ul>
             <% else %>
@@ -30,38 +32,35 @@
   </div>
 
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <div class="carte-dashboard">
     <% if @user.ateliers.any? %>
         <ul>
         <% @user.ateliers.each do |atelier| %>
-            <p>Nom : <%= atelier.name %></p>
-            <p>Adresse : <%= atelier.location %></p>
-            <p>Prix (€) : <%= atelier.price %></p>
-            <p>Categorie : <%= atelier.category %></p>
-<<<<<<< HEAD
-            <a href="<%= edit_atelier_path(atelier) %>" class="button-dashbord">Modifier</a>
-            <a href="<%= atelier_path(atelier) %>" class="button-dashbord">Supprimer</a>
-=======
-            <%= link_to "Changer les informations de l'atelier", edit_atelier_path(atelier), class: "btn btn-warning" %>
-            <%= link_to "Supprimer cet atelier", atelier_path(atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger" %>
-            <hr>
->>>>>>> 0ff05203249fecbe81684fdea7acb9da691b6007
-          </li>
+            <div class="carte">
+            <%= cl_image_tag atelier.photo.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+              <h4><%= atelier.name %></h4>
+              <p>Ville : <%= atelier.location %></p>
+              <p><%= atelier.price %>€/jour</p>
+              <p>Catégorie : <%= atelier.category %></p>
+              <%= link_to "Modifier", edit_atelier_path(atelier), class: "button-dashbord" %>
+              <%= link_to "Supprimer", atelier_path(atelier), class: "button-dashbord" %>
+          </div>
         <% end %>
         </ul>
-        <% else %>
-        <p>Vous n'avez pas d'ateliers.</p>
-        <% end %>
-    </div>
+      <% else %>
+      <p>Vous n'avez pas d'ateliers.</p>
+      <% end %>
  </div>
 
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-    <div class="carte-dashboard">
+    <div class="carte">
+        <%= cl_image_tag current_user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user profile avatar-bordered" %>
               <p>Nom : <%= current_user.name %></p>
               <p>Prénom : <%= current_user.last_name %></p>
               <p>Pseudo : <%= current_user.username %></p>
               <p>Email : <%= current_user.email %></p>
-  </div>
-</div>
+            <%= link_to "Modifier", user_profile_path(current_user), class: "button-dashbord" %>
+    </div>
 
+
+  </div>
 </div>

@@ -143,13 +143,20 @@
 
 }
 
-.carte-dashboard {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 8px;
-  position: relative; // La position relative est nécessaire pour le positionnement absolu des enfants
-  width: 300px; // Fixez la largeur des cartes pour qu'elles soient toutes identiques
-  height: 300px; // Fixez la hauteur des cartes pour qu'elles soient toutes identiques
+.carte-img-infos {
+  border-radius: 50%;
 
+}
+
+.tab-content > .active {
+  display: flex;
+  justify-content: center;
+
+}
+
+.carte .profile {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
