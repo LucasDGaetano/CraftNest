@@ -1,0 +1,15 @@
+.footer {
+  background-color: $orange; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  padding: 50px; /* Espacement intérieur */
+  margin-top: 3em;
+}
+
+.footer-links a {
+  color: white; /* Couleur des liens */
+  margin-right: 10px; /* Espacement entre les liens */
+}
+
+.footer-copyright p {
+  margin: 0; /* Supprime les marges par défaut */
+}
