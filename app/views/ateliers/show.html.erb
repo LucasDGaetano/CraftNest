@@ -1,8 +1,15 @@
 <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>'); position: relative;">
-  <div class="container h-100">
-  <%# text here %>
-    <h1><%= @atelier.name %></h1>
-    <p><strong><%= @atelier.description %></strong></p>
+  <div class="container h-100 ">
+ <div class="container d-flex justify-content-center">
+    <h1 class="banner-title text-start pt-3"><%= @atelier.name %></h1>
+  </div>
+
+  <!-- Conteneur Bootstrap pour la description au centre de la bannière -->
+  <div class="container h-100 d-flex flex-column justify-content-center">
+    <div class="mt-auto mb-auto"> <!-- Ceci pousse la description vers le centre -->
+      <p class="banner-description text-center"><strong><%= @atelier.description %></strong></p>
+    </div>
+  </div>
 
       <div class="d-flex align-items-center position-absolute bottom-0 start-0 m-3">
       <div class="me-2">
@@ -22,11 +29,19 @@
 <div class="container">
     <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
 
-      <h2> Prix : <%= @atelier.price %> €/jour</h2>
-      <h2> Lieu : <%= @atelier.location %></h2>
+      <h4> Prix : <%= @atelier.price %> €/jour</h4>
+      <h4> Lieu : <%= @atelier.location %></h4>
       <%# rajouter une map ? %>
-      <h2> categorie : <%= @atelier.category %></h2>
+      <h4> categorie : <%= @atelier.category %></h4>
   <hr>
+  <h2>L'atelier se situe ici :</h2>
+  <div class="container d-flex justify-content-center">
+    <div style="width: 600px; height: 400px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
+
   <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
   <hr>
 
