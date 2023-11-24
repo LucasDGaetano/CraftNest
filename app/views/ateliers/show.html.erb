@@ -1,56 +1,106 @@
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @atelier.photo.key, fetch_format: :auto, quality: "auto" %>'); position: relative;">
+  <div class="container h-100 ">
+ <div class="container d-flex justify-content-center">
+    <h1 class="banner-title text-start pt-5 mt-5" style="font-size: 52px;"><%= @atelier.name %></h1>
+  </div>
+
+  <!-- Conteneur Bootstrap pour la description au centre de la bannière -->
+  <div class="container h-100 d-flex flex-column justify-content-center">
+    <div class="mt-auto mb-auto"> <!-- Ceci pousse la description vers le centre -->
+      <p class="banner-description text-center" style="font-size: 20px;"><strong><%= @atelier.description %></strong></p>
+    </div>
+  </div>
+
+      <div class="d-flex align-items-center position-absolute bottom-0 start-0 m-3">
+      <div class="me-2">
+          <p class="m-0"> Proposé par <%= @atelier.user.username %>  </p>
+      </div>
+      <div>
+          <% if @atelier.user.profile_pic.attached? %>
+            <%= cl_image_tag @atelier.user.profile_pic.key, crop: "fill", fetch_format: "auto", class: "card-trip-user avatar-bordered" %>
+          <% else %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
-  <h1>ATELIER <%= @atelier.name %></h1>
+    <%# <%= cl_image_tag @atelier.photo.key, fetch_format: :auto, quality: "auto" %>
+    <div class="my-3 text-center">
+    <h3>Informations :</h3>
+      <h4> Prix : <%= @atelier.price %> €/jour</h4>
+      <h4> Lieu : <%= @atelier.location %></h4>
+      <%# rajouter une map ? %>
+      <h4> Catégorie : <%= @atelier.category %></h4>
+    </div>
+      <hr>
 
-  <h2> propriétaire : <%= @atelier.user.username %></h2>
-  <h2> prix : <%= @atelier.price %></h2>
-  <h2> lieu : <%= @atelier.location %></h2>
-  <h2> categorie : <%= @atelier.category %></h2>
+  <h3 class="text-center my-3">L'atelier se situe ici !</h2>
+  <div class="container d-flex justify-content-center">
+    <div style="width: 600px; height: 400px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 
-  <%= cl_image_tag @atelier.photo.key, height: 300, width: 400, crop: :fill %>
-  <p><%= @atelier.description %></p>
-
-<hr>
-  <%= link_to "return to ateliers", ateliers_path %>
+  <div class="text-center my-3">
+    <%= link_to "Retour aux ateliers", ateliers_path, class: "btn btn-primary" %>
+  </div>
   <hr>
 
   <% if current_user == @atelier.user %>
-    <h4>C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
-    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier) %>
-    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+  <div class="my-5">
+    <h4 class="text-center mb-3">C'est votre atelier, souhaitez-vous en changer les informations ?</h4>
+    <%= link_to "Changer les informations de l'atelier", edit_atelier_path(@atelier), class: "btn btn-warning text-center" %>
+    <%= link_to "Supprimer cet atelier", atelier_path(@atelier), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"}, class: "btn btn-danger text-center" %>
+  </div>
+
   <% else %>
-    <div data-controller="toggle-reservations" class="mt-5">
-      <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Ajouter réservation</button>
-      <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none">
-        <h1>Faire une nouvelle réservation</h1>
-        <%= simple_form_for [@atelier, @reservation] do |f| %>
-          <%= f.input :start_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
-          <%= f.input :end_date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker" } } %>
-          <%= f.button :submit %>
-        <% end %>
+    <div data-controller="toggle-reservations" class="mt-3 mb-5 text-center">
+      <button data-action="click->toggle-reservations#fire" class="btn btn-outline-primary">Faire une réservation</button>
+      <div data-toggle-reservations-target="togglableElement" class= "new-reservation d-none mb-3">
+        <h1 class="my-3">Faire une nouvelle réservation</h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <%= simple_form_for [@atelier, @reservation] do |f| %>
+            <div class="d-flex justify-content-center">
+              <div class="p-2">
+                <p>Date de début</p>
+                <%= f.input :start_date,
+                        as: :string,
+                        input_html: { data: { controller: "datepicker" } },
+                        label: false %>
+              </div>
+              <div class="p-2">
+                <p>Date de fin</p>
+                  <%= f.input :end_date,
+                          as: :string,
+                          input_html: { data: { controller: "datepicker" } },
+                          label: false%>
+              </div>
+            </div>
+            <div class="p-2">
+              <%= f.submit "Réservez !", class: "btn btn-success mb-5" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-<% end %>
-
-</div>
-
-<hr>
-<div class="container">
-
-<% @atelier.reservations.each do |resa| %>
-  <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
-    <h3>You have a reservation for this atelier</h3>
-    <h4>reservation begins in <%= (resa.start_date - Date.today).to_i %> days</h4>
-    <h4>and lasts for <%= (resa.end_date - resa.start_date).to_i %> days</h4>
-
-    <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Confirm?"} %>
-    <%= link_to "Voir détails", reservation_path(resa) %>
-    <hr>
   <% end %>
-<% end %>
 </div>
-<hr>
+
+<div class="container">
+  <% @atelier.reservations.each do |resa| %>
+    <% if current_user.id == resa.user_id && resa.atelier_id == @atelier.id %>
+      <h3>Vous avez une réservation pour cet atelier</h3>
+      <h4>La réservation commence dans <%= (resa.start_date - Date.today).to_i %> jours</h4>
+      <h4>et dure <%= (resa.end_date - resa.start_date).to_i %> jours</h4>
+
+      <%= link_to "Supprimer la réservation ", reservation_path(resa.id), data: {turbo_method: :delete, turbo_confirm: "Êtes vous sûr ?"} %>
+      <%= link_to "Voir détails", reservation_path(resa) %>
+      <hr>
+    <% end %>
+  <% end %>
+</div>
